@@ -7,6 +7,7 @@ import com.kalex.catsapplication.catsList.models.CatList
 import com.kalex.catsapplication.utils.UseCaseFlowStatus
 import com.kalex.catsapplication.utils.ViewModelNewsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -24,7 +25,7 @@ class CatsListViewModel @Inject constructor(
         get() = _catsListState
 
     fun getCatsBreeds() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             catsListUseCase.getCatsBreeds().collectLatest {
                 when (it) {
                     is UseCaseFlowStatus.Error -> _catsListState.value = ViewModelNewsUiState.Error("Unknown error")

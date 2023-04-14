@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -20,8 +18,9 @@ import com.kalex.catsapplication.catsList.models.CatItem
 @Composable
 fun CatItemCard(
     cat: CatItem,
-    imgUrl: String
-){
+    imgUrl: String,
+) {
+    // TODO : Adjust design
     Card(
         elevation = CardDefaults.elevatedCardElevation(),
         shape = RoundedCornerShape(8.dp),
@@ -29,7 +28,7 @@ fun CatItemCard(
             .padding(8.dp)
             .height(110.dp)
             .fillMaxWidth()
-            .clickable {  },
+            .clickable { },
     ) {
         Text(
             text = cat.name,
@@ -50,7 +49,6 @@ fun CatItemCard(
                 .padding(24.dp), // intrinsic measurements
             horizontalArrangement = Arrangement.Center,
         ) {
-
             Text(
                 text = cat.origin,
                 fontSize = 14.sp,
@@ -61,7 +59,6 @@ fun CatItemCard(
                 fontSize = 14.sp,
                 modifier = Modifier.padding(8.dp, 1.dp),
             )
-
         }
     }
 }

@@ -34,7 +34,7 @@ class CatsListFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MaterialTheme {
-                    catsViewModel.catsListState
+                    catsViewModel.getCatsBreeds()
                     handleCatListState()
                 }
             }

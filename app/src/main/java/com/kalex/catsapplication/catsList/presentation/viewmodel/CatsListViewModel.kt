@@ -6,12 +6,14 @@ import com.kalex.catsapplication.catsList.data.usecase.CatsListUseCase
 import com.kalex.catsapplication.catsList.models.CatList
 import com.kalex.catsapplication.utils.UseCaseFlowStatus
 import com.kalex.catsapplication.utils.ViewModelNewsUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class CatsListViewModel @Inject constructor(
     private val catsListUseCase: CatsListUseCase,
 ) : ViewModel() {

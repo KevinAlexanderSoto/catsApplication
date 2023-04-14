@@ -17,7 +17,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.CatsApplication.NoActionBar">
+            android:theme="@style/Theme.CatsApplication">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

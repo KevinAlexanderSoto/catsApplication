@@ -1,6 +1,7 @@
 package com.kalex.catsapplication
 
 import com.kalex.catsapplication.catsList.data.ApiCats
+import com.kalex.catsapplication.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

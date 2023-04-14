@@ -3,7 +3,7 @@ package com.kalex.catsapplication.utils
 sealed class ViewModelNewsUiState<T> {
     data class Success<T>(val data: T) : ViewModelNewsUiState<T>()
     data class Loading<T>(val isLoading: Boolean) : ViewModelNewsUiState<T>()
-    data class Error<T>(val exception: Int) : ViewModelNewsUiState<T>()
+    data class Error<T>(val exception: String) : ViewModelNewsUiState<T>()
 }
 
 sealed class UseCaseFlowStatus<T> {

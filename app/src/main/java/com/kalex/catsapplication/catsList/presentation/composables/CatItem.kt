@@ -16,10 +16,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.kalex.catsapplication.catsList.models.CatItem
+import com.kalex.catsapplication.catsList.models.CatItemDto
 
 @Composable
 fun CatItemCard(
-    cat: CatItem,
+    cat: CatItemDto,
     imgUrl: String,
 ) {
     // TODO : Adjust design

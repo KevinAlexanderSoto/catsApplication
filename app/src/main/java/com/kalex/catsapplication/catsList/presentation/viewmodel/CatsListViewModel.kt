@@ -3,8 +3,7 @@ package com.kalex.catsapplication.catsList.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kalex.catsapplication.catsList.data.usecase.CatsListUseCase
-import com.kalex.catsapplication.catsList.models.CatItem
-import com.kalex.catsapplication.catsList.models.CatList
+import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.utils.UseCaseFlowStatus
 import com.kalex.catsapplication.utils.ViewModelNewsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,10 +18,10 @@ import javax.inject.Inject
 class CatsListViewModel @Inject constructor(
     private val catsListUseCase: CatsListUseCase,
 ) : ViewModel() {
-    private val _catsListState = MutableStateFlow<ViewModelNewsUiState<List<CatItem>>>(
+    private val _catsListState = MutableStateFlow<ViewModelNewsUiState<List<CatItemDto>>>(
         ViewModelNewsUiState.Loading(true),
     )
-    val catsListState: StateFlow<ViewModelNewsUiState<List<CatItem>>>
+    val catsListState: StateFlow<ViewModelNewsUiState<List<CatItemDto>>>
         get() = _catsListState
 
     fun getCatsBreeds() {

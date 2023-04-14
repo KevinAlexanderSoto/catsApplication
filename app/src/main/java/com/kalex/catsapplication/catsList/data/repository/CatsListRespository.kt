@@ -1,7 +1,7 @@
 package com.kalex.catsapplication.catsList.data.repository
 
-import com.kalex.catsapplication.catsList.models.CatItem
+import com.kalex.catsapplication.catsList.models.CatItemDto
 
 interface CatsListRespository {
-    suspend fun getCatsBreeds(): List<CatItem>
+    suspend fun getCatsBreeds(): List<CatItemDto>
 }

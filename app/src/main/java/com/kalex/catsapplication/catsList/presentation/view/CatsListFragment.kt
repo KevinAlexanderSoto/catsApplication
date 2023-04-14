@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.kalex.catsapplication.catsList.models.CatItem
+import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.catsList.presentation.composables.CatListColum
 import com.kalex.catsapplication.catsList.presentation.viewmodel.CatsListViewModel
 import com.kalex.catsapplication.utils.handleViewModelState
@@ -43,7 +44,7 @@ class CatsListFragment : Fragment() {
 
     @Composable
     private fun handleCatListState() {
-        val data = remember { mutableStateListOf<CatItem>() }
+        val data = remember { mutableStateListOf<CatItemDto>() }
         handleViewModelState(
             catsViewModel.catsListState,
             onSuccess = {

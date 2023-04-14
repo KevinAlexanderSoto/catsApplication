@@ -11,10 +11,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.kalex.catsapplication.catsList.models.CatItem
+import com.kalex.catsapplication.catsList.models.CatItemDto
 
 @Composable
 fun CatListColum(
-    catList: List<CatItem>,
+    catList: List<CatItemDto>,
 ) {
     Column(
         modifier = Modifier.padding(16.dp),

@@ -5,15 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.catsList.presentation.composables.CatListColum
+import com.kalex.catsapplication.catsList.presentation.composables.LoadingBar
 import com.kalex.catsapplication.catsList.presentation.viewmodel.CatsListViewModel
 import com.kalex.catsapplication.utils.handleViewModelState
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,19 +43,23 @@ class CatsListFragment : Fragment() {
     @Composable
     private fun handleCatListState() {
         val data = remember { mutableStateListOf<CatItemDto>() }
+        var isLoading by remember { mutableStateOf(true) }
+
         handleViewModelState(
             catsViewModel.catsListState,
             onSuccess = {
                 data.clear()
                 data += it
+                isLoading = false
             },
             onLoading = {
-                // TODO
+                isLoading = it
             },
             onError = {
-                // TODO
+                isLoading = false
             },
         )
+        LoadingBar(isLoading)
         if (data.isNotEmpty()) {
             CatListColum(data)
         }

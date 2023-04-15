@@ -22,50 +22,60 @@ fun CatItemCard(
     cat: CatItemDto,
     imgUrl: String,
 ) {
-    // TODO : Adjust design
     Card(
         elevation = CardDefaults.elevatedCardElevation(),
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(16.dp),
         modifier = Modifier
             .padding(16.dp)
-            .height(350.dp)
+            .height(360.dp)
             .fillMaxWidth()
             .clickable { },
     ) {
-        Column(
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-        ) {
-            Text(
-                text = cat.name,
-                maxLines = 1,
-                fontWeight = FontWeight.Bold,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(8.dp, 8.dp),
-            )
+        Text(
+            text = cat.name,
+            fontSize = 18.sp,
+            maxLines = 1,
+            fontWeight = FontWeight.Bold,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(2.dp, 8.dp).align(Alignment.CenterHorizontally),
+        )
 
-            AsyncImage(
-                model = imgUrl,
-                contentDescription = "cat img",
-                modifier = Modifier.padding(2.dp).height(200.dp).width(200.dp),
-                contentScale = ContentScale.Fit,
-            )
-            Row(
-                Modifier
-                    .height(IntrinsicSize.Min)
-                    .padding(24.dp), // intrinsic measurements
-                horizontalArrangement = Arrangement.Center,
-            ) {
-                Text(
-                    text = cat.origin,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(8.dp, 1.dp),
-                )
-                Text(
-                    text = cat.intelligence.toString(),
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(8.dp, 1.dp),
-                )
-            }
+        AsyncImage(
+            model = imgUrl,
+            contentDescription = "cat img",
+            modifier = Modifier.padding(2.dp).height(225.dp).width(250.dp).align(Alignment.CenterHorizontally),
+            contentScale = ContentScale.Crop,
+        )
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(16.dp).align(Alignment.CenterHorizontally), // intrinsic measurements
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            CatProperty("Pais", cat.origin)
+
+            CatProperty("Inteligencia", cat.intelligence.toString())
         }
+    }
+}
+
+@Composable
+fun CatProperty(title: String, subtitle: String) {
+    Column(
+        modifier = Modifier.padding(2.dp),
+    ) {
+        Text(
+            text = title,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(8.dp, 4.dp).align(Alignment.CenterHorizontally),
+        )
+        Text(
+            text = subtitle,
+            fontSize = 16.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(8.dp, 2.dp).align(Alignment.CenterHorizontally),
+        )
     }
 }

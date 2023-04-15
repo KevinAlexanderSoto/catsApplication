@@ -2,6 +2,7 @@ package com.kalex.catsapplication.catsList.data.repository
 
 import com.kalex.catsapplication.catsList.models.CatItemDto
 
-interface CatsListRespository {
+interface CatsListRepository {
     suspend fun getCatsBreeds(): List<CatItemDto>
+    suspend fun getCatImage(id: String): String
 }

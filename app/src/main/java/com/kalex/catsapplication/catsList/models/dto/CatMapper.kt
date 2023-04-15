@@ -8,6 +8,7 @@ fun CatItem.ConvertToCatDto(): CatItemDto {
         name = name,
         intelligence = intelligence,
         origin = origin,
+        imgId = reference_image_id,
         imgUrl = "",
     )
 }

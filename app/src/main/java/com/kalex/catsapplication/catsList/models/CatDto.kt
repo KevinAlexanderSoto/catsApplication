@@ -4,5 +4,6 @@ data class CatItemDto(
     val name: String,
     val intelligence: Int,
     val origin: String,
-    val imgUrl: String
+    var imgId: String?,
+    var imgUrl: String,
 )

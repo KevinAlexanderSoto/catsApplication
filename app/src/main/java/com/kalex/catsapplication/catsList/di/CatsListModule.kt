@@ -1,8 +1,8 @@
 package com.kalex.catsapplication.catsList.di
 
 import com.kalex.catsapplication.catsList.data.ApiCats
-import com.kalex.catsapplication.catsList.data.repository.CatsListRespository
-import com.kalex.catsapplication.catsList.data.repository.CatsListRespositoryImpl
+import com.kalex.catsapplication.catsList.data.repository.CatsListRepository
+import com.kalex.catsapplication.catsList.data.repository.CatsListRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ object CatsListModule {
 
     @Provides
     @Singleton
-    fun provideCatsRepository(api: ApiCats): CatsListRespository {
-        return CatsListRespositoryImpl(api)
+    fun provideCatsRepository(api: ApiCats): CatsListRepository {
+        return CatsListRepositoryImpl(api)
     }
 }

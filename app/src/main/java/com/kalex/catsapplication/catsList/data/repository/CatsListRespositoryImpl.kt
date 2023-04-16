@@ -2,7 +2,7 @@ package com.kalex.catsapplication.catsList.data.repository
 
 import com.kalex.catsapplication.catsList.data.ApiCats
 import com.kalex.catsapplication.catsList.models.CatItemDto
-import com.kalex.catsapplication.catsList.models.dto.ConvertToCatDto
+import com.kalex.catsapplication.catsList.models.dto.convertToCatDto
 import com.kalex.catsapplication.catsList.models.dto.getImageUrl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -18,7 +18,7 @@ class CatsListRepositoryImpl @Inject constructor(
                 catApi.getCatsBreeds()
             }
             nativeList.await().map {
-                it.ConvertToCatDto()
+                it.convertToCatDto()
             }
         }
     }

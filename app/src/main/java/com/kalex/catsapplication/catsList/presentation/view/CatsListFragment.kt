@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.kalex.catsapplication.R
 import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.catsList.presentation.composables.CatListColum
 import com.kalex.catsapplication.catsList.presentation.composables.LoadingBar
@@ -44,7 +45,7 @@ class CatsListFragment : Fragment() {
 
                     val cats: LazyPagingItems<CatItemDto> =
                         catsViewModel.getPagingCatsBreeds().collectAsLazyPagingItems()
-                    PagingCatListColum(cats)
+                    PagingCatListColum(cats,getString(R.string.catList_title))
                 }
             }
         }

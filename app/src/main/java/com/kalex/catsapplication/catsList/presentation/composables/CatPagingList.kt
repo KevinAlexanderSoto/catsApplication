@@ -21,12 +21,13 @@ import com.kalex.catsapplication.catsList.models.CatItemDto
 @Composable
 fun PagingCatListColum(
     catList: LazyPagingItems<CatItemDto>,
+    screenTitle: String
 ) {
     Column(
         modifier = Modifier.padding(8.dp),
     ) {
         Text(
-            text = "Cats Breeds",
+            text = screenTitle,
             fontSize = 20.sp,
             maxLines = 1,
             fontWeight = FontWeight.Bold,

@@ -22,6 +22,26 @@ class CatsListRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun getPagingCatsBreeds(page: Int): List<CatItemDto> {
+        return coroutineScope {
+            val nativeList = async(Dispatchers.IO) {
+                catApi.getPagingCatsBreeds(page)
+            }
+            val catList = async(Dispatchers.Default) {
+                nativeList.await().map {
+                    it.convertToCatDto()
+                }
+            }
+
+            catList.await().apply {
+                map {
+                    it.imgUrl = catApi.getCatImg(it.imgId ?: "NZpO4pU56M").getImageUrl()
+                }
+            }
+        }
+    }
+
     override suspend fun getCatImage(id: String): String {
         return catApi.getCatImg(id).getImageUrl()
     }

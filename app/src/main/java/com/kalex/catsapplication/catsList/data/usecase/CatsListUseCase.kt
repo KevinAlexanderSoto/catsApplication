@@ -1,11 +1,16 @@
 package com.kalex.catsapplication.catsList.data.usecase
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.kalex.catsapplication.catsList.data.paging.CatsPagingSource
 import com.kalex.catsapplication.catsList.data.repository.CatsListRepository
 import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.utils.UseCaseFlowStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -27,5 +32,15 @@ class CatsListUseCase @Inject constructor(
         } catch (e: Exception) {
             emit(UseCaseFlowStatus.Error("Unknown error"))
         }
+    }
+    fun getPagingCatsBreeds(): Flow<PagingData<CatItemDto>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5,
+            ),
+            pagingSourceFactory = {
+                CatsPagingSource(repository)
+            },
+        ).flow
     }
 }

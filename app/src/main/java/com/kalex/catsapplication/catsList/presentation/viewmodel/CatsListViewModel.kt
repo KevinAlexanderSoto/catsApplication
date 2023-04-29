@@ -2,6 +2,7 @@ package com.kalex.catsapplication.catsList.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.kalex.catsapplication.catsList.data.usecase.CatsListUseCase
 import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.utils.UseCaseFlowStatus
@@ -11,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,11 +30,22 @@ class CatsListViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             catsListUseCase.getCatsBreeds().collectLatest {
                 when (it) {
-                    is UseCaseFlowStatus.Error -> _catsListState.value = ViewModelNewsUiState.Error("Unknown error")
-                    is UseCaseFlowStatus.Loading -> _catsListState.value = ViewModelNewsUiState.Loading(true)
-                    is UseCaseFlowStatus.Success -> _catsListState.value = ViewModelNewsUiState.Success(it.data)
+                    is UseCaseFlowStatus.Error ->
+                        _catsListState.value =
+                            ViewModelNewsUiState.Error("Unknown error")
+
+                    is UseCaseFlowStatus.Loading ->
+                        _catsListState.value =
+                            ViewModelNewsUiState.Loading(true)
+
+                    is UseCaseFlowStatus.Success ->
+                        _catsListState.value =
+                            ViewModelNewsUiState.Success(it.data)
                 }
             }
         }
     }
+
+    fun getPagingCatsBreeds() =
+        catsListUseCase.getPagingCatsBreeds().cachedIn(viewModelScope).flowOn(Dispatchers.IO)
 }

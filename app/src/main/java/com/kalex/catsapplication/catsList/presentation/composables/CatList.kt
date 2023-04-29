@@ -18,7 +18,7 @@ fun CatListColum(
     catList: List<CatItemDto>,
 ) {
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(8.dp),
     ) {
         Text(
             text = "Cats Breeds",

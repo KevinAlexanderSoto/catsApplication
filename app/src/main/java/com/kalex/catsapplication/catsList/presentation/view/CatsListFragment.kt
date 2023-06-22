@@ -22,6 +22,7 @@ import com.kalex.catsapplication.catsList.models.CatItemDto
 import com.kalex.catsapplication.catsList.presentation.composables.CatListColum
 import com.kalex.catsapplication.catsList.presentation.composables.LoadingBar
 import com.kalex.catsapplication.catsList.presentation.composables.PagingCatListColum
+import com.kalex.catsapplication.catsList.presentation.composables.PagingCatListColum2
 import com.kalex.catsapplication.catsList.presentation.viewmodel.CatsListViewModel
 import com.kalex.catsapplication.utils.handleViewModelState
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,10 +43,13 @@ class CatsListFragment : Fragment() {
                     /**Old cat list implementation**/
                     // catsViewModel.getCatsBreeds()
                     // HandleCatListState()
+                    PagingCatListColum2(getString(R.string.catList_title))
 
+                   /*
+                    //Paging with paging3
                     val cats: LazyPagingItems<CatItemDto> =
                         catsViewModel.getPagingCatsBreeds().collectAsLazyPagingItems()
-                    PagingCatListColum(cats,getString(R.string.catList_title))
+                    PagingCatListColum(cats,getString(R.string.catList_title))*/
                 }
             }
         }
